@@ -25,17 +25,17 @@
 
 Dependencies: `torch`, `torchvision`, `matplotlib`
 
-- [ ] **Load MNIST dataset with TorchVision**
+- [X] **Load MNIST dataset with TorchVision**
   *Why first:* Before you build anything, you need to see and understand your data. Every ML project starts here — the data dictates everything: input shape, number of classes, preprocessing.
   *What it means:* `datasets.MNIST(download=True, transform=transforms.ToTensor())` downloads 70,000 grayscale digit images. `transforms.ToTensor()` converts each image from a PIL image (0–255 ints) to a PyTorch tensor with floats in [0, 1] — neural nets work better with small normalized numbers. You split into `train_data` (60k images the model learns from) and `test_data` (10k images you test on — the model never sees these during training, so they measure real performance).
   *What to check:* `len(train_data)`, `len(test_data)`, `train_data[0][0].shape` → should be `(1, 28, 28)` = 1 channel, 28 height, 28 width. `train_data[0][1]` → an integer label (0–9).
 
-- [ ] **Wrap data in DataLoader**
+- [X] **Wrap data in DataLoader**
   *Why here:* You can't feed 60,000 images at once — too much memory, and the math works better in small batches. DataLoader handles batching, shuffling, and iteration.
   *What it means:* `DataLoader(train_data, batch_size=64, shuffle=True)` groups images into batches of 64. `shuffle=True` randomizes order each epoch so the model doesn't memorize sequence. Test loader doesn't shuffle — order doesn't matter for evaluation.
   *What to check:* grab one batch with `images, labels = next(iter(train_loader))`, print `images.shape` → `(64, 1, 28, 28)` = 64 images in a batch.
 
-- [ ] **Visualize 10 random samples with matplotlib**
+- [X] **Visualize 10 random samples with matplotlib**
   *Why here:* You should always eyeball your data before modeling. Are the images clean? Are labels correct? What does a "hard" digit look like?
   *What to do:* `plt.subplot` grid, show 10 images with their labels as titles. Look at the variety — some 4s look like 9s, some 1s are slanted. These are the cases your model will struggle with later.
 

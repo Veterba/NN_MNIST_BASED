@@ -1,2 +1,5 @@
 .venv/
 .claude
+first_model.py
+data/
+ClAUDE.md

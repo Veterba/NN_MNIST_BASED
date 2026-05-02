@@ -23,7 +23,7 @@ class DigitNet(nn.Module):
             nn.Linear(784, 128),
             nn.ReLU(),
             nn.Linear(128, 10)
-        )
+    )
 
     def forward(self, x):
         return self.layers(x)
